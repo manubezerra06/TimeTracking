@@ -1,0 +1,66 @@
+﻿@model TimeTracking.Models.DetailsProjectViewModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Project</h4>
+    @Html.HiddenFor(model => model.ProjectID)
+
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Type)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Type)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Owner)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Owner)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CreationDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreationDate)
+        </dd>
+
+
+    </dl>
+</div>
+<p>
+    @if (Model.IsOwner)
+    {
+        @Html.ActionLink("Edit Project", "Edit", new { id = Model.ProjectID }) @(" | ")
+        @Html.ActionLink("Back to List", "Index")
+    }
+    else
+    {
+        @Html.ActionLink("Back to List", "Index")
+    }
+
+</p>
+<div id="activities">
+    <img src='@Url.Content("~/Content/720.gif")' alt="loading activities">
+</div>
+@section scripts{
+
+    <script src="~/Scripts/Pages/details-page.js"></script>
+}
+
